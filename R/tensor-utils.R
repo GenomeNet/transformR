@@ -8,7 +8,7 @@ shape_list <-
     dims <- x$get_shape()$dims
     if (is.null(dims)) return(tf$shape(x))
     
-    sess <- tf$keras$backend$get_session()
+    sess <- tf$compat$v1$keras$backend$get_session()
     
     shape <- tf$shape(x)$eval(session = sess)
     
@@ -37,7 +37,7 @@ shape_list2 <-
     
     dims <- purrr::map(dims, ~.$value)
     
-    sess <- tf$keras$backend$get_session()
+    sess <- tf$compat$v1$keras$backend$get_session()
     shape <- tf$shape(x)$eval(session = sess)
     
     ret <- vector('list', length(dims))
